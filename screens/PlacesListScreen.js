@@ -14,7 +14,7 @@ const PlacesListScreen = (props) => {
       keyExtractor={(item) => item.id}
       renderItem={(itemData) => (
         <PlaceItem
-          image={null}
+          image={itemData.item.imageUri}
           title={itemData.item.title}
           address={null}
           onSelect={() => {
@@ -32,7 +32,7 @@ const PlacesListScreen = (props) => {
 PlacesListScreen.navigationOptions = (navData) => {
   return {
     headerTitle: 'All Places',
-    headerRight: () => {
+    headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Add Place"
@@ -41,8 +41,8 @@ PlacesListScreen.navigationOptions = (navData) => {
             navData.navigation.navigate('NewPlace');
           }}
         />
-      </HeaderButtons>;
-    }
+      </HeaderButtons>
+    )
   };
 };
 

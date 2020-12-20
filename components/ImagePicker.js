@@ -10,8 +10,8 @@ const ImgPicker = (props) => {
 
   const verifyPermissions = async () => {
     const result = await Permissions.askAsync(
-      Permissions.CAMERA
-      // Permissions.MEDIA_LIBRARY
+      Permissions.CAMERA,
+      Permissions.MEDIA_LIBRARY
     );
     if (result.status !== 'granted') {
       Alert.alert(
@@ -37,6 +37,7 @@ const ImgPicker = (props) => {
     });
 
     setPickedImage(image.uri);
+    props.onImageTaken(image.uri);
   };
 
   return (
